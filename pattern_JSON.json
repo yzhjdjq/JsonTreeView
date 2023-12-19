@@ -1,0 +1,16 @@
+{
+    "objects": [
+        {
+            "id": 1,
+            "name": "Root",
+            "parent_ids": [],
+            "child_ids": [2]
+        },
+        {
+            "id": 2,
+            "name": "Child",
+            "parent_ids": [1],
+            "child_ids": []
+        }
+    ]
+}
