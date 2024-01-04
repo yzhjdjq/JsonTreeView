@@ -39,6 +39,11 @@ void JsonObjectModel::SetName(const QString &name)
     this->name = name;
 }
 
+void JsonObjectModel::SetPathToIconImage(const QString &pathToIconImage)
+{
+    this->pathToIconImage = pathToIconImage;
+}
+
 void JsonObjectModel::SetParent_ids(const QList<int> &parent_ids)
 {
     this->parent_ids = parent_ids;
@@ -57,6 +62,11 @@ int JsonObjectModel::Id() const
 QString JsonObjectModel::Name() const
 {
     return name;
+}
+
+QString JsonObjectModel::PathToIconImage() const
+{
+    return pathToIconImage;
 }
 
 QList<int> JsonObjectModel::Parent_ids() const

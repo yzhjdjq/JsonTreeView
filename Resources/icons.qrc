@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="1">icons/1.jpg</file>
+        <file alias="2">icons/2.jpg</file>
+        <file alias="3">icons/3.jpg</file>
+        <file alias="4">icons/4.jpg</file>
+        <file alias="5">icons/5.png</file>
+        <file alias="6">icons/6.jpg</file>
+        <file alias="7">icons/7.jpg</file>
+        <file alias="8">icons/8.jpg</file>
+        <file alias="9">icons/9.jpg</file>
+        <file alias="10">icons/10.jpeg</file>
+        <file alias="11">icons/11.jpg</file>
+        <file alias="12">icons/12.png</file>
+        <file alias="13">icons/13.jpg</file>
+        <file alias="14">icons/14.jpg</file>
+        <file alias="15">icons/15.jpg</file>
+        <file alias="16">icons/16.png</file>
+        <file alias="17">icons/17.jpg</file>
+    </qresource>
+</RCC>

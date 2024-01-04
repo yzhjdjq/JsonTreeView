@@ -1,10 +1,11 @@
 #ifndef JSONOBJECTMODEL_H
 #define JSONOBJECTMODEL_H
 
-#define ID          "id"
-#define NAME        "name"
-#define PARENTS     "parent_ids"
-#define CHILDS      "child_ids"
+#define JSON_ID          "id"
+#define JSON_NAME        "name"
+#define JSON_ICON_PATH   "pathToIconImage"
+#define JSON_PARENTS     "parent_ids"
+#define JSON_CHILDS      "child_ids"
 
 #include <qobject.h>
 
@@ -20,10 +21,12 @@ class JsonObjectModel : public QObject
     Q_OBJECT
     Q_PROPERTY(int id READ Id NOTIFY idChanged)
     Q_PROPERTY(QString name READ Name WRITE SetName NOTIFY nameChanged)
+    Q_PROPERTY(QString pathToIconImage READ PathToIconImage WRITE SetPathToIconImage NOTIFY pathToIconImageChanged)
     Q_PROPERTY(QList<int> parent_ids READ Parent_ids WRITE SetParent_ids NOTIFY parentChanged)
     Q_PROPERTY(QList<int> child_ids READ Child_ids WRITE SetChild_ids NOTIFY childrenChanged)
     int id;
     QString name;
+    QString pathToIconImage;
     QList<int> parent_ids;
     QList<int> child_ids;
 
@@ -38,16 +41,19 @@ public:
     void SetJsonObjectModel(int id, const QString &name, QList<int> &parent_ids, QList<int> &child_ids);
     void SetId(int id);
     void SetName(const QString &name);
+    void SetPathToIconImage(const QString &pathToIconImage);
     void SetParent_ids(const QList<int> &parent_ids);
     void SetChild_ids(const QList<int> &child_ids);
     int Id() const;
     QString Name() const;
+    QString PathToIconImage() const;
     QList<int> Parent_ids() const;
     QList<int> Child_ids() const;
 
 Q_SIGNALS:
     void idChanged();
     void nameChanged();
+    void pathToIconImageChanged();
     void parentChanged();
     void childrenChanged();
 

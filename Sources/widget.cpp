@@ -28,29 +28,32 @@ void Widget::ReadJsonFile(QString path)
     {
         model = nullptr;
         QJsonObject object = element.toJsonObject();
-        QList<int> parent_ids;
-        foreach (QVariant id, object[PARENTS].toArray().toVariantList())
+        QList<int> parent_ids, child_ids;
+        foreach (QVariant id, object[JSON_PARENTS].toArray().toVariantList())
             parent_ids.append(id.toInt());
-        QList<int> child_ids;
-        foreach (QVariant id, object[CHILDS].toArray().toVariantList())
+        foreach (QVariant id, object[JSON_CHILDS].toArray().toVariantList())
             child_ids.append(id.toInt());
         foreach (JsonObjectModel *parentObj, m_objects) {
             foreach (int id, parentObj->Child_ids()) {
-                if (object[ID].toInt() == id) {
-                    model = new JsonObjectModel(object[ID].toInt(),
-                                                object[NAME].toString(),
+                if (object[JSON_ID].toInt() == id) {
+                    model = new JsonObjectModel(object[JSON_ID].toInt(),
+                                                object[JSON_NAME].toString(),
                                                 parent_ids,
                                                 child_ids,
                                                 parentObj);
+                    model->SetPathToIconImage(":/" + QString::number(object[JSON_ID].toInt()));
                     break;
                 } // if
             } // foreach
         } // foreach
-        if (model == nullptr)
-            model = new JsonObjectModel(object[ID].toInt(),
-                                        object[NAME].toString(),
+        if (model == nullptr) {
+            model = new JsonObjectModel(object[JSON_ID].toInt(),
+                                        object[JSON_NAME].toString(),
                                         parent_ids,
                                         child_ids);
+            model->SetPathToIconImage(":/" + QString::number(object[JSON_ID].toInt()));
+            // model->SetPathToIconImage("C:/bPO-211/PD/JsonTreeView/Resources/icons/16.png");
+        } // if
         m_objects.push_back(model);
     } // foreach
 }
@@ -68,7 +71,7 @@ Widget::Widget(QWidget *parent)
         if (obj->Parent_ids().count() == 0)
             m_jsonTreeModel->addItem(obj, QModelIndex());
     } // foreach
-    m_jsonTreeModel->setColumns(QStringList() << NAME);
+    m_jsonTreeModel->setColumns(QStringList() << JSON_NAME << JSON_ID);
     m_treeView->setModel(m_jsonTreeModel);
 }
 

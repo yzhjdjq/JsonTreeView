@@ -11,23 +11,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-    find_package(Qt6 COMPONENTS Core REQUIRED)
+find_package(Qt6 COMPONENTS Core REQUIRED)
+include_directories(Include)
 
 set(PROJECT_SOURCES
-        main.cpp
-        widget.cpp
-        widget.h
-
+        Sources/main.cpp
+        Sources/widget.cpp
+        Include/widget.h
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(JsonTreeView
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-		pattern_JSON.json
-		json.json
-		jsontreemodel.h jsontreemodel.cpp
-		jsonobjectmodel.h jsonobjectmodel.cpp
+                pattern_JSON.json
+                json.json
+                Include/jsontreemodel.h Sources/jsontreemodel.cpp
+                Include/jsonobjectmodel.h Sources/jsonobjectmodel.cpp
+                Resources/icons.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET JsonTreeView APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

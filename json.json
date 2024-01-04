@@ -40,13 +40,13 @@
             "id": 7,
             "name": "Root 4",
             "parent_ids": [],
-            "child_ids": [8]
+            "child_ids": [8,9]
         },
         {
             "id": 8,
             "name": "Child 4",
             "parent_ids": [7],
-            "child_ids": [10]
+            "child_ids": [10, 11]
         },
         {
             "id": 9,
@@ -70,18 +70,24 @@
             "id": 12,
             "name": "Root 5",
             "parent_ids": [],
-            "child_ids": []
+            "child_ids": [15]
         },
         {
             "id": 13,
             "name": "Root 6",
             "parent_ids": [],
-            "child_ids": []
+            "child_ids": [15]
         },
         {
             "id": 14,
             "name": "Root 7",
             "parent_ids": [],
+            "child_ids": [15]
+        },
+        {
+            "id": 15,
+            "name": "Grand son 3 with several parent",
+            "parent_ids": [14],
             "child_ids": []
         }
     ]

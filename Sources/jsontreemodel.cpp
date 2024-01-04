@@ -1,5 +1,6 @@
 #include "jsontreemodel.h"
 #include "jsonobjectmodel.h"
+#include <qicon.h>
 
 QObject *JsonTreeModel::objByIndex(const QModelIndex &index) const
 {
@@ -62,5 +63,14 @@ QVariant JsonTreeModel::data(const QModelIndex &index, int role) const
         return QVariant();
     if(role == Qt::DisplayRole)
         return objByIndex(index)->property(m_columns.at(index.column()).toUtf8());
+    if(role == Qt::DecorationRole && index.column() == 0)
+        return QIcon(objByIndex(index)->property(JSON_ICON_PATH).toString());
+    return QVariant();
+}
+
+QVariant JsonTreeModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if(orientation == Qt::Orientation::Horizontal && role == Qt::DisplayRole)
+        return QVariant(m_columns.at(section).toUtf8());
     return QVariant();
 }
